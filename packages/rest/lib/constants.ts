@@ -1,3 +1,5 @@
+import type { UserSocialLink } from "@guildedjs/guilded-api-typings";
+
 /** The meanings of each of the known guilded api response status codes. */
 export const GUILDED_STATUS_CODES = {
     200: "The request was successful" as const,
@@ -13,4 +15,41 @@ export const GUILDED_STATUS_CODES = {
     502: "Something went wrong on our end" as const,
     503: "Something went wrong on our end" as const,
     504: "Something went wrong on our end" as const,
+};
+
+export const ROUTES = {
+    // Channel Endpoints
+    channelMessages: (channelId: string) => `/channels/${channelId}/messages` as const,
+    channelMessage: (channelId: string, messageId: string) => `/channels/${channelId}/messages/${messageId}` as const,
+
+    // Member Endpoints
+    memberNickname: (userId: string) => `/members/${userId}/nickname` as const,
+    memberRoles: (userId: string) => `/members/${userId}/roles` as const,
+
+    // Forum Endpoints
+    createForumThread: (channelId: string) => `/channels/${channelId}/forum` as const,
+
+    // List Endpoints
+    createListItem: (channelId: string) => `/channels/${channelId}/list` as const,
+
+    // Docs Endpoints
+    channelDocs: (channelId: string) => `/channels/${channelId}/docs` as const,
+    channelDoc: (channelId: string, docId: number) => `/channels/${channelId}/docs/${docId}` as const,
+
+    // Reactions Endpoints
+    channelReaction: (channelId: string, contentId: string, emoteId: number) =>
+        `/channels/${channelId}/content/${contentId}/emotes/${emoteId}` as const,
+
+    // Team XP Endpoints
+    memberXP: (userId: string) => `/members/${userId}/xp` as const,
+    roleXP: (userId: string) => `/roles/${userId}/xp` as const,
+
+    // Social Links Endpoints
+    getMemberSocialLinks: (userId: string, type: UserSocialLink) => `/members/${userId}/social-links/${type}` as const,
+
+    // Group Memberships Endpoints
+    groupMember: (groupId: string, userId: string) => `/groups/${groupId}/members/${userId}` as const,
+
+    // Role Memberships Endpoints
+    memberRole: (memberId: string, roleId: number) => `/members/${memberId}/roles/${roleId}` as const,
 };

@@ -33,7 +33,7 @@ import {
     RestPutReactionResult,
     UserSocialLink,
 } from "@guildedjs/guilded-api-typings";
-import { ROUTES } from "./routes";
+import { ROUTES } from "./constants";
 import type { RestManager } from "./RestManager";
 
 export class Router {

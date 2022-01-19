@@ -11,6 +11,15 @@ export interface RestOptions {
     maxRatelimitRetryLimit?: number;
 }
 
+export interface MakeOptions<B = Record<string, any>> {
+    method: string;
+    query?: RequestBodyObject;
+    path: string;
+    body?: B;
+}
+export type JSONB = Record<string, any>;
+export type RequestBodyObject = JSONB | undefined;
+
 export enum RequestMethods {
     GET,
     POST,
